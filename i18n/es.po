@@ -1,0 +1,113 @@
+#: init/redmine-inbound.js
+msgid "Redmine Inbound"
+msgstr "Entrada de Redmine"
+
+#: init/redmine-inbound.js init/redmine-outbound.js
+msgid "Redmine Server undefined. Please choose one. "
+msgstr "Servidor de Redmine no definido. Por favor, escoja uno."
+
+#: init/redmine-inbound.js init/redmine-outbound.js
+msgid "Missing URL parameter."
+msgstr "URL no encontrada."
+
+#: init/redmine-inbound.js
+msgid "Topic created with mid: "
+msgstr "Tópico creado con mid: "
+
+#: init/redmine-inbound.js
+msgid "Topic doesn't exist"
+msgstr "Tópico no existe"
+
+#: init/redmine-inbound.js
+msgid "Topic already updated"
+msgstr "Tópico ya actualizado"
+
+#: init/redmine-inbound.js
+msgid "Change topic status"
+msgstr "Cambio de estado de tópico"
+
+#: init/redmine-inbound.js
+msgid "Update topic"
+msgstr "Actualizar tópico"
+
+#: init/redmine-inbound.js
+msgid "Redmine topic updated"
+msgstr "Tópico de Remine actualizado"
+
+#: init/redmine-outbound.js
+msgid "Redmine Outbound"
+msgstr "Salida de Redmine"
+
+#: init/redmine-outbound.js
+msgid "Action option undefined."
+msgstr "Acción no definida."
+
+#: init/redmine-outbound.js
+msgid "Topic with mid "
+msgstr "Tópico con mid "
+
+#: init/redmine-outbound.js
+msgid " not found"
+msgstr " no encontrado"
+
+#: init/redmine-outbound.js
+msgid " has no relation with Redmine"
+msgstr " no tiene relación con Redmine"
+
+#: init/redmine-outbound.js
+msgid "not found"
+msgstr no encontrado
+
+#: init/redmine-outbound.js
+msgid "Redmine topic doesn't exist"
+msgstr "No existe el tópico en Redmine"
+
+#: public/form/redmine-category.js
+msgid "Clarive Category Name"
+msgstr "Nombre de la categoría en Clarive"
+
+#: public/form/redmine-category.js
+msgid "Redmine Category Name"
+msgstr "Nombre de la categoría en Redmine"
+
+#: public/form/redmine-category.js
+msgid "Clarive - Redmine Field Correspondence"
+msgstr "Correspondencia de campos Clarive - Redmine"
+
+#: public/form/redmine-category.js
+msgid "Clarive - Redmine List Correspondence"
+msgstr "Lista de correspondencias de los campos Clarive - Redmine"
+
+#: public/form/redmine-server.js
+msgid "API Key"
+msgstr "API key"
+
+#: public/form/redmine-server.js
+msgid "Redmine URL"
+msgstr "Redmine URL"
+
+#: public/form/redmine-services-inbound.js
+#: public/form/redmine-services-outbound.js
+msgid "Redmine Server"
+msgstr "Servidor Redmine"
+
+#: public/form/redmine-services-inbound.js
+#: public/form/redmine-services-outbound.js
+msgid "Redmine Category"
+msgstr "Categoría Redmine"
+
+#: public/form/redmine-services-outbound.js
+msgid "Action"
+msgstr "Acción"
+
+#: public/form/redmine-services-outbound.js
+msgid "Create"
+msgstr "Crear"
+
+#: public/form/redmine-services-outbound.js
+msgid "Update"
+msgstr "Actualizar"
+
+#: public/form/redmine-services-outbound.js
+msgid "Change Status"
+msgstr "Cambiar Estado"
