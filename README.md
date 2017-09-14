@@ -2,7 +2,9 @@
 
 The Redmine plugin will allow you to keep issues (topics) from Redmine synchronized with Clarive and vice versa.
 
-# What is Redmine Redmine is a flexible project management web application.
+# What is Redmine 
+
+Redmine is a flexible project management web application.
 
 ## Installation
 
