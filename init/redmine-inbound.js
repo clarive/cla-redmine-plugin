@@ -14,37 +14,11 @@ reg.register('service.redmine.inbound', {
         var sem = require("cla/sem");
         var myutils = require("myutils");
 
-        var server = config.server || '';
-        var category = config.RedmineCategory;
-        var redmineServer = ci.findOne({
-            mid: server + ''
-        });
-
-        if (!redmineServer) {
-            log.error(_("Redmine Server undefined. Please choose one. "));
-            return;
-        }
         var category = config.redmineCategory;
         var redmineCategory = ci.findOne({
             mid: category + ''
         });
-
-        var urlServer = redmineServer.redmineUrl;
-        var agent = web.agent();
-        var agentNotParsed = web.agent({
-            auto_parse: 0
-        });
-        var headers = {
-            'X-Redmine-API-Key': redmineServer.apiKey,
-            'content-type': 'application/json'
-        };
-        if (!urlServer) {
-            log.error(_("Missing URL parameter."));
-            return;
-        }
         var content = {};
-
-
         var stashWs = ctx.stash('ws_params');
         var wsBody = JSON.parse(ctx.stash('ws_body'));
         var topics = db.getCollection('topic');

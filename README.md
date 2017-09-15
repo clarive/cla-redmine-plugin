@@ -82,7 +82,6 @@ key.
 
 Service settings:
 
-- **Redmine Server** - Server with the user data from Redmine that will create the topic in Clarive.
 - **Redmine Category** - The Redmine category where correspondences are defined.
 
 ### Redmine Outbound
