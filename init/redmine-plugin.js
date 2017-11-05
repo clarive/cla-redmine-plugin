@@ -5,7 +5,7 @@ ci.createRole("Redmine");
 ci.createClass("RedmineServer", {
     form: '/plugin/cla-redmine-plugin/form/redmine-server.js',
     icon: '/plugin/cla-redmine-plugin/icon/redmine.svg',
-    roles: ["Redmine"],
+    roles: ["Redmine", "ClariveSE"],
     has: {
         apiKey: {
             is: "rw",
@@ -23,7 +23,7 @@ ci.createClass("RedmineServer", {
 ci.createClass("RedmineCategory", {
     form: '/plugin/cla-redmine-plugin/form/redmine-category.js',
     icon: '/plugin/cla-redmine-plugin/icon/redmine.svg',
-    roles: ["Redmine"],
+    roles: ["Redmine", "ClariveSE"],
     has: {
         clariveCategory: {
             is: "rw",

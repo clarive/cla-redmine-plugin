@@ -4,6 +4,20 @@ reg.register('service.redmine.inbound', {
     name: _('Redmine Inbound'),
     icon: '/plugin/cla-redmine-plugin/icon/redmine.svg',
     form: '/plugin/cla-redmine-plugin/form/redmine-services-inbound.js',
+    rulebook: {
+        moniker: 'redmine_inbound',
+        description: _('Redmine inbound service'),
+        required: ['redmine_category'],
+        allow: [ 'redmine_category'],
+        mapper: {
+            'redmine_category':'redmineCategory'
+        },
+        examples: [{
+            redmine_inbound: {
+                redmine_category: 'category_resource'
+            }
+        }]
+    },
     handler: function(ctx, config) {
         var ci = require("cla/ci");
         var log = require("cla/log");

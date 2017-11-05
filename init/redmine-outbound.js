@@ -4,6 +4,23 @@ reg.register('service.redmine.outbound', {
     name: _('Redmine Outbound'),
     icon: '/plugin/cla-redmine-plugin/icon/redmine.svg',
     form: '/plugin/cla-redmine-plugin/form/redmine-services-outbound.js',
+    rulebook: {
+        moniker: 'redmine_outbound',
+        description: _('Redmine outbound service'),
+        required: [ 'server', 'synchronize_when', 'redmine_category'],
+        allow: ['server', 'synchronize_when', 'redmine_category'],
+        mapper: {
+            'synchronize_when':'synchronizeWhen',
+            'redmine_category':'redmineCategory'
+        },
+        examples: [{
+            redmine_outbound: {
+                server: 'hpalm_resource',
+                synchronize_when: 'create',
+                redmine_category: 'category_resource'
+            }
+        }]
+    },
     handler: function(ctx, config) {
         var ci = require("cla/ci");
         var log = require("cla/log");

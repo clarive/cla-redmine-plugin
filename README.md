@@ -1,32 +1,30 @@
 # Redmine Plugin
 
+<img src="https://cdn.rawgit.com/clarive/cla-redmine-plugin/master/public/icon/redmine.svg?sanitize=true" alt="Redmine Plugin" title="Redmine Plugin" width="120" height="120">
+
 The Redmine plugin will allow you to keep issues (topics) from Redmine synchronized with Clarive and vice versa.
 
 # What is Redmine 
 
-Redmine is a flexible project management web application.
+Redmine is a flexible project management web application. Written using the Ruby on Rails framework, it is cross-platform and cross-database.
 
 ## Installation
 
-To install the plugin, place the `cla-redmine-plugin folder` inside the `CLARIVE_BASE/plugins` directory in your Clarive
+To install the plugin, place the `cla-redmine-plugin` folder inside the `$CLARIVE_BASE/plugins` directory in your Clarive
 instance.
-
-## How to Use
-
-Once the plugin is placed in its folder and Clarive has been restarted, you can start using it by going to your Clarive
-instance.
-
-You will now have two new Resources, one named RedmineServer for the Redmine server, and the other named RedmineCategory
-for the Redmine category correspondence. You will also have two new palette services; Redmine Outbound is used when you
-modify something in Clarive and information needs to be sent to Redmine, and Redmine Inbound in order to receive
-information on Redmine changes.
 
 ### RedmineServer
 
+To configurate the Redmine Server Resource open:
+
+In **Clarive SE**: Resources -> ClariveSE.
+
+In **Clarive EE**: Resources -> Redmine.
+
 This Resource is used to save your Redmine Server settings:
 
-- **API key **- Redmine API key.
-- **Login URL **- The URL where Redmine is located.
+- **API key** - Redmine API key.
+- **Login URL** - The URL where Redmine is located.
 
 Example:
         
@@ -34,6 +32,12 @@ Example:
         Login URL: https://miredmine.example.com
 
 ### RedmineCategory
+
+To configurate the Redmine Category Resource open:
+
+In **Clarive SE**: Resources -> ClariveSE.
+
+In **Clarive EE**: Resources -> Redmine.
 
 This Resource will synchronize any Clarive topic you choose with the desired Redmine issue. That way, when you create or
 update a topic of this type, the same action will be performed at the other end.
@@ -68,29 +72,102 @@ Example:
             - 1920                          1
             - 1300                          2
 
-## Palette Services
-
 ### Redmine Inbound
 
-This palette service will perform a Redmine action in Clarive. You need to place this palette service in a Webservice
-rule.
+You need to set the inbound service as a Webservice.
 
 You will also need to use a Webhook Redmine Plugin to set the URL and to keep this synchronization between Clarive and
 Redmine. To call the service where the Inbound service is located, the URL should be as follows: `<your Clarive
 url>/rule/ws/<inboundCreateRule>?api_key=<your API Key in Clarive>`, therefore you need to obtain a Clarive user API
 key.
 
-Service settings:
+The various parameters are:
 
-- **Redmine Category** - The Redmine category where correspondences are defined.
+- **Redmine Category (variable name: redmine_category)** - The Redmine category where correspondences are defined.
 
 ### Redmine Outbound
 
 Use this service to perform an action remotely from Clarive. The *Create*, *Change Status* and *Update* events must be
 "post-online".
 
-Service settings:
+The various parameters are:
 
-- **Redmine Server** - The server with the user data from Redmine that will create the topic in Clarive.
-- **Action** - The action to be performed. This can be *Create*, *Update* or *Change Status*.
-- **Redmine Category** - The Redmine category where correspondences are defined.
+- **Redmine Server (server)** - The server with the user data from Redmine that will create the topic in Clarive.
+- **Action (synchronize_when)** - The action to be performed. This can be *Create* **("create")**, *Update* **("update")** or *Change Status* **("change_status")**.
+- **Redmine Category (redmine_category)** - The Redmine category where correspondences are defined.
+
+## How to use
+
+### In Clarive EE
+
+Once the plugin is placed in its folder, you can find this service in the palette in the section of generic service and can be used like any other palette op.
+
+Outbound example:
+
+```yaml
+    Redmine Server: Redmine server
+    Action: Create
+    Redmine Category: Redmine categories
+``` 
+
+Inbound example:
+
+```yaml
+    Redmine Category: Redmine categories
+``` 
+
+### In Clarive SE
+
+#### Rulebook
+
+If you want to use the plugin through the Rulebook, in any `do` block, use this ops as examples to configure the different parameters:
+
+Outbound example:
+
+```yaml
+do:
+   - redmine_outbound:
+       server: 'redmine_resource'                # Required. Use the mid set to the resource you created 
+       synchronize_when: 'create'                # Required.
+       redmine_category: 'category_resource'     # Required. Use the mid set to the resource you created 
+``` 
+
+Inbound example:
+
+```yaml
+do:
+   - redmine_inbound:
+       redmine_category: 'category_resource'     # Required. Use the mid set to the resource you created 
+```
+
+##### Outputs
+
+###### Success
+
+The service will return the response from the Redmine API.
+
+###### Possible configuration failures
+
+**Task failed**
+
+You will get the error from the Redmine API.
+
+**Variable required**
+
+```yaml
+Error in rulebook (compile): Required argument(s) missing for op "redmine_outbound": "server"
+```
+
+Make sure you have all required variables defined.
+
+**Not allowed variable**
+
+```yaml
+Error in rulebook (compile): Argument `Category` not available for op "redmine_inbound"
+```
+
+Make sure you are using the correct paramaters (make sure you are writing the variable names correctly).
+
+## More questions?
+
+Feel free to join **[Clarive Community](https://community.clarive.com/)** to resolve any of your doubts.
