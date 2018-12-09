@@ -1,7 +1,7 @@
 name: Redmine Plugin
 description: The Redmine plugin will allow you to keep issues (topics) from Redmine synchronized with Clarive and vice versa.
 version: 1.0
-icon: https://cdn.rawgit.com/clarive/cla-redmine-plugin/master/public/icon/redmine.svg?sanitize=true
+icon: https://cdn.jsdelivr.net/gh/clarive/cla-redmine-plugin@master/public/icon/redmine.svg?sanitize=true
 url: https://github.com/clarive/cla-redmine-plugin
 requires:
   - clarive_version: 6.8 <= version
